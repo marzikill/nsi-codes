@@ -2,6 +2,7 @@
 
 #Exercice 1
 def moyenne(liste):
+    """ [(int, int)] -> float """
     somme_valeurs = 0
     somme_coefficients = 0
 
@@ -10,11 +11,12 @@ def moyenne(liste):
         somme_coefficients += coefficient
         
     if somme_coefficients == 0:
-        print("None") # Erreur ?
+        return None
     else:
         return somme_valeurs / somme_coefficients
 
 #Les tests
+# il faut ajouter plus de tests
 #moyenne([(8, 2), (12, 0), (13.5, 1), (5, 0.5)])
 
 #moyenne([(3, 0), (5, 0)])
