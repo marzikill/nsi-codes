@@ -15,7 +15,14 @@ class Point:
 
     def __str__(self):
         return f"Point({self.x}, {self.y})"
-    
+
+class Segment:
+    def __init__(self, debut:Point, fin:Point) -> None:
+        """Crée un segment ?"""
+        self.debut = debut
+        self.fin = fin
+
+Segment(Point(0, 0), Point(1, 1))
 
 
 a = Point(2, 4)
