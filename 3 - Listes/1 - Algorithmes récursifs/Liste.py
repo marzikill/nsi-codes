@@ -1,5 +1,5 @@
 class Liste:
-    def __init__(self, c, n):
+    def __init__(self, c, n) -> None:
         assert isinstance(c, int), f"Les éléments d'une Liste sont de type int"
         assert isinstance(n, Liste) or n is None, f"La queue d'une Liste doit être une Liste"
         self.c = c

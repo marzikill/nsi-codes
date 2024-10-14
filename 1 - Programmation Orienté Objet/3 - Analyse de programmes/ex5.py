@@ -22,6 +22,10 @@ class Segment:
         self.debut = debut
         self.fin = fin
 
+    def translate(self, dx, dy) -> None:
+        self.debut.deplace(dx, dy)
+        self.fin.deplace(dx, dy)
+
 Segment(Point(0, 0), Point(1, 1))
 
 
