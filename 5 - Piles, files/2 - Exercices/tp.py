@@ -81,6 +81,71 @@ def retourne_mieux(p):
     p = p_aux
 # est_ce que c'est mieux ?
 
+# Exercice 3
+# Code naïf qui ne marche pas du tout
+# def est_bien_parenthesee(p):
+#     p_ouverte, p_ferme = 0, 0
+#     for parenthese in p:
+#         if parenthese == "(":
+#             p_ouverte += 1
+#         else:
+#             p_ferme += 1
+#     if p[-1] == ")" and p[0] == "(" and p_ouverte == p_ferme:
+#         return True
+#     return False
+
+def est_bien_parenthesee(chaine):
+    """ str -> bool """
+    p = creer_pile_vide()
+    for c in chaine:
+        if c == "(":
+            empiler(p, c)
+        elif est_pile_vide(p):
+            return False
+        elif c == ")":
+            depiler(p)
+    return est_pile_vide(p)
+
+# 3. 16 = 2**4 combinaisons possibles, donc
+# pour une expression de taille n il y a 2**n.
+
+# le code suivant : compte de 0 à 15 (16 possibilité) en base 2
+# autrement dit on liste toutes les chaînes de caractères
+# de taille n = 4 constituées uniquement de deux symboles
+# n = 4
+# for i in range(2**n):
+#     print(int2strbin(i, n))
+
+def expression(x, n):
+    """ int, int -> str """
+    binaire = int2strbin(x, n)
+    # on remplace dans la chaîne binaire tous
+    # les 0 par des ( et les 1 par des )
+    chaine = ""
+    for b in binaire:
+        if b == "0":
+            chaine += "("
+        else:
+            chaine += ")"
+    return chaine
+
+# On affiche toutes les expressions de taille 4
+# avec des parenthèses ouvrantes et fermantes
+# n = 4
+# for i in range(2**n):
+#     print(expression(i, n))
+
+def liste_bien_parenthesee(n):
+    """ int -> [str] """
+    l = []
+    for i in range(2**n):
+        expr = expression(i, n)
+        if est_bien_parenthesee(expr):
+            l.append(expr)
+    return l
+#   # Avec une liste en compréhension
+#     return [ expression(i, n) for i in range(2**n)
+#              if est_bien_parenthesee(expression(i, n))] 
 
 
 
@@ -92,6 +157,10 @@ def retourne_mieux(p):
 
 
 
+
+
+
+    
     
     
     
