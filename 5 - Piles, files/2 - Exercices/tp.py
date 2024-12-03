@@ -147,6 +147,99 @@ def liste_bien_parenthesee(n):
 #     return [ expression(i, n) for i in range(2**n)
 #              if est_bien_parenthesee(expression(i, n))] 
 
+# Exercice 5
+
+def tri_pile(A):
+    B = creer_pile_vide()
+    C = creer_pile_vide()
+    while not est_pile_vide(A):
+        if est_pile_vide(B):
+            empiler(B, depiler(A))
+        sA, sB = sommet(A), sommet(B)
+        if sA < sB:
+            empiler(B, depiler(A))
+            while not est_pile_vide(C):
+                empiler(B, depiler(C))
+        else:
+            empiler(C, depiler(B))
+    # attention, cela vide la pile A
+    return B
+            
+# Exercice 4
+
+# 1.a. 5 6 / 4 + 3 * 2 +
+# 1.b -13
+
+e = "3 4 - 12 1 + *"
+
+def decoupe(e):
+    """ str -> File[str | int] """
+    f = creer_file_vide()
+    element_en_lecture = ''
+    for c in e:
+        if c in {'+', '-', '/', '*'}:
+            enfiler(f, c)
+            element_en_lecture = ''
+        elif c == " " and not element_en_lecture == '':
+            enfiler(f, int(element_en_lecture))
+            element_en_lecture = ''
+        else:
+            element_en_lecture += c
+    return f
+
+# {'+', '-', '/', '*'} est un ensemble
+# '1' in {'+', '-', '/', '*'}
+# opération "in" en temps constant en la taille de l'ensemble
+
+# ['+', '-', '/', '*'] est une liste
+# '1' in ['+', '-', '/', '*']
+# opération "in" en temps proportionnel en la taille de la liste
+
+def evalue(f):
+    """ File -> int """
+    p = creer_pile_vide()
+    while not est_file_vide(f):
+        c = defiler(f)
+        if c in {'+', '-', '/', '*'}:
+            if not est_pile_vide(p):
+                a = depiler(p)
+            else:
+                return None
+            if not est_pile_vide(p):
+                b = depiler(p)
+            else:
+                return None
+            if c == '+':
+                empiler(p, a + b)
+            elif c == '*':
+                empiler(p, a * b)
+            elif c == '-':
+                empiler(p, b - a)
+            elif c == '/':
+                empiler(p, b / a)
+        else:
+            empiler(p, c)
+    if est_pile_vide(p):
+        return None
+    reponse = depiler(p)
+    if not est_pile_vide(p):
+        return None
+    return reponse
+
+def calculatrice_npi(chaine):
+    f = decoupe(chaine)
+    return evalue(f)
+
+
+
+
+
+
+
+
+
+
+
 
 
 

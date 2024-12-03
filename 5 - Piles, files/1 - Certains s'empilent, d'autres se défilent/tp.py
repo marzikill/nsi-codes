@@ -99,19 +99,43 @@ def restaure_pile(p, p_aux):
         c = p.depiler()
         p_aux.empiler(c)
     while not p_aux.est_vide():
-        ... # À compléter
+        c = p_aux.depiler()
+        p.empiler(c)
 
 def restaure_file(f, f_aux):
     """ File, File -> None
     Restaure f à son état initial lorsque les défilement successifs
     on été enfilés dans f_aux. """
-    pass
+    while not f.est_vide():
+        b = f.defiler()
+        f_aux.enfiler(b)
+    while not f_aux.est_vide():
+        b = f_aux.defiler()
+        f.enfiler(b)
+        
 
 def compatibles_mieux(p, f):
     """ Pile, File -> Bool
     Détermine si les chapeaux sont associés aux bons bonshommes
     L'état de la pile p et la file f sera le même avant et après exécution """
-    pass
+    p_aux = Pile()
+    f_aux = File()
+    while not p.est_vide():
+        b = f.defiler()
+        c = p.depiler()
+        f_aux.enfiler(b)
+        p_aux.empiler(c)
+        if not b.content(c):
+            restaure_pile(p, p_aux)
+            restaure_file(f, f_aux)
+            return False
+    restaure_pile(p, p_aux)
+    restaure_file(f, f_aux)    
+    return True
+    # ou bien return f.est_vide()
+
+p1, p2, p3, p4 = init_piles()
+f1, f2, f3, f4 = init_files()
 
 def solution():
     """ () -> [(int, int)]
@@ -119,7 +143,14 @@ def solution():
     piles = init_piles()
     files = init_files()
     sol = []
-    # À compléter
+    for i in range(len(piles)):
+        for j in range(len(files)):
+            p = piles[i]
+            f = files[j]
+            if compatibles_mieux(p, f):
+                sol.append((i, j))
+    return sol
+    
 
 def arrivee_rampe(profondeur):
     """ [int] -> [int]
