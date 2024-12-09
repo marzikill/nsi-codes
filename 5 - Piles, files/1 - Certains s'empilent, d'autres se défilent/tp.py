@@ -151,6 +151,14 @@ def solution():
                 sol.append((i, j))
     return sol
     
+# Question 5.
+# 1. Ordre d'arrivée (premier au début) 7 8 9 10 3 2 1 5 4 6
+# 2. 3 piles, de taille A: 4, B: 1, C: 2.
+# 8 9 10 sont dans le même ordre qu'initialement : elles ne sont passées
+# par aucune pile.
+# 4 3 2 1 sont les premières billes (tombées dans la première pile) qui ont
+# 5 est tombée dans la seconde pile
+# 7 6 sont tombées dans la troisième pile.
 
 def arrivee_rampe(profondeur):
     """ [int] -> [int]
