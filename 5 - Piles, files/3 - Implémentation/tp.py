@@ -101,3 +101,36 @@ f = File()
 f.enfiler(1)
 f.enfiler(2)
 f.enfiler(3)
+
+class PileBornee:
+    def __init__(self, maxi):
+        self.pile = Pile()
+        self.capacite = maxi
+        self.taille = 0
+        
+    def est_vide(self):
+        return self.pile.est_vide()
+        
+    def est_pleine(self):
+        """ PileBornee -> bool """
+        return self.capacite == self.taille
+    
+    def empiler(self, v):
+        """ PileBornee, int -> bool """
+        if self.est_pleine():
+            raise IndexError('la pile est pleine')
+        else:
+            self.pile.empiler(v)
+            self.taille += 1
+    
+    def depiler(self):
+        """ PileBornee -> int """
+        if self.est_vide():
+            raise IndexError('On ne peut pas depiler')
+        else:
+            # valeur = self.pile.sommet.valeur
+            self.taille -= 1
+            return self.pile.depiler()
+    
+    def __str__(self):
+        return self.pile.__str__()
