@@ -157,30 +157,38 @@ def arrivee_rampe(profondeur):
     Détermine l'ordre d'arrivée des boules numérotées de 1 à 10 """
     rampe_lancement = File()
     for b in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
-        ... # à compléter
+        rampe_lancement.enfiler(b)
     piles = [Pile(max_elt = p) for p in profondeur] # liste de piles bornées, dans l'ordre du parcours.
     rampe_finale = File() # billes dans l'ordre d'arrivée
     numero_pile = 0 # indice de la pile à remplir
     
-    # on remplit les piles dans l'ordre dans lequel elles sont
-    # positionnées sur le parcours tant que cela est possible
-    # (c'est à dire tant que la dernière pile du parcours n'est pas vide)
+    # on remplit les piles dans l'ordre dans lequel elles sont positionnées
+    # sur le parcours tant que cela est possible (c'est à dire tant que
+    # la dernière pile du parcours n'est pas vide)
     # Si la pile que l'on cherche à remplir est pleine,
     # alors il faut commencer par changer le numéro de la pile à remplir. 
     # On empile une bille prise depuis la rampe de lancement sur la pile à remplir.
-    while ...:
-        ... # à compléter
+    while not piles[-1].est_pleine():
+        if piles[numero_pile].est_pleine():
+            numero_pile += 1
+        b = rampe_lancement.defiler()
+        piles[numero_pile].empiler(b)
         
     # Toutes les billes restantes roulent directement dans la rampe d'arrivée.
-    while ...:
-        ... # à compléter
+    while not rampe_lancement.est_vide():
+        b = rampe_lancement.defiler()
+        rampe_finale.enfiler(b)
   
-    # On retire les ressorts dans l'ordre dans lesquels ils sont
-    # positionnés sur le parcours. Les billes ressortent des trous et
-    # viennent s'accumuler sur la rampe de lancement.
+    # On retire les ressorts dans l'ordre dans lesquels ils sont positionnés
+    # sur le parcours. Les billes ressortent des trous et viennent s'accumuler
+    # sur la rampe de lancement.
     for p in piles:
-        while ...:
-            ... # à compléter
+        while not p.est_vide():
+            b = p.depiler()
+            rampe_finale.enfiler(b)
+    # Dans certains cas, cet algorithme peut ne pas produire le résultat
+    # attendu, pourquoi ? Trouver un exemple qui produise un résultat incorrect.
+    # Puis, corriger l'algorithme.
 
     return rampe_finale
 
