@@ -37,18 +37,28 @@ def est_feuille(a):
 def taille(a):
     """ Arbre -> int
     Renvoie le nombre de nœuds de a """
-    pass
+    if est_vide(a):
+        return 0
+    else:
+        return 1 + taille(gauche(a)) + taille(droit(a))
 
 def somme(a):
     """ Arbre -> int
     Renvoie la somme des éléments de l'arbre a """
-    pass
+    if est_vide(a):
+        return 0
+    else:
+        return somme(gauche(a)) + somme(droit(a)) + etiquette(a) 
+        
 
 def nb_niveaux(a):
     """ Arbre -> int
     Renvoie le nombre de niveaux de l'arbre """
-    pass
-
+    if est_vide(a):
+        return 0
+    else:
+        return 1 + max(nb_niveaux(gauche(a)), nb_niveaux(droit(a)))
+        
 def affiche_infixe(a):
     """ Arbre -> Nonetype
     Affiche l'arbre a de manière infixe """
@@ -63,6 +73,8 @@ def maximum(a):
     """ Arbre -> int
     Renvoie la plus grande étiquette de a """
     pass
+
+# À finir pour lundi : affiche_infixe, rechercher, maximum
 
 def est_egal(a1, a2):
     """ Arbre, Arbre -> bool
