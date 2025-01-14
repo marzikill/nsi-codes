@@ -62,17 +62,45 @@ def nb_niveaux(a):
 def affiche_infixe(a):
     """ Arbre -> Nonetype
     Affiche l'arbre a de manière infixe """
-    pass
+    if est_vide(a):
+        pass
+    else:
+        #print("(", end = '')
+        affiche_infixe(gauche(a))
+        affiche_infixe(droit(a))
+        print(etiquette(a), end = ' ')
+        #print(")", end='')
 
 def rechercher(a, e):
     """ Arbre, int -> bool
     Renvoie True ssi e est une des étiquettes de a """
-    pass
+    if est_vide(a):
+        return False
+    else:
+        if etiquette(a) == e:
+            return True
+        else:
+            return rechercher(gauche(a), e) or rechercher(droit(a), e)
 
 def maximum(a):
     """ Arbre -> int
     Renvoie la plus grande étiquette de a """
-    pass
+    if est_feuille(a):
+        return etiquette(a)
+    elif est_vide(gauche(a)):
+        return max(etiquette(a), maximum(droit(a)))
+    elif est_vide(droit(a)):
+        return max(etiquette(a), maximum(gauche(a)))
+    else:
+        m1 = maximum(gauche(a))
+        m2 = maximum(droit(a))
+        return max(m1, m2, etiquette(a))
+        
+    # à retenir : quand on doit écrire une fonction
+    # dont le cas de base est est_feuille(a) il faut nécessairement
+    # rajouter les cas
+    # - est_vide(gauche(a)):
+    # - est_vide(droit(a)):
 
 # À finir pour lundi : affiche_infixe, rechercher, maximum
 
