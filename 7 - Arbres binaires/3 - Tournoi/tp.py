@@ -1,17 +1,48 @@
+from ds import creer_vide, est_vide, est_feuille, gauche, droit, etiquette, Arbre
+
+a = Arbre("Kamel",
+          Arbre("Kamel",
+                Arbre("Joris", None, None),
+                Arbre("Kamel", None, None)),
+          Arbre("Carine",
+                Arbre("Carine", None, None),
+                Arbre("Abdou", None, None)))
+
 def nb_joueurs(a):
-    """ Arbre -> int
-    Renvoie le nombre de joueurs ayant participé à la compétition d'arbre a """
-    pass
+    if est_feuille(a):
+        return 1
+    # ça marche UNIQUEMENT parce que les arbres sont parfaits
+    # sinon il faudrait écrire :
+    # elif est_vide(gauche(a)):
+    # ...
+    # elif est_vide(droit(a)):
+    # ...
+    return nb_joueurs(gauche(a)) + nb_joueurs(droit(a))
+
 
 def nb_rounds(a):
     """ Arbre -> int
     Renvoie le nombre de rounds de la compétition a """
-    pass
+    if est_vide(a):
+        return 0
+    if est_feuille(a):
+        return 0
+    else:
+        # ça marche UNIQUEMENT parce que les arbres sont parfaits
+        # return nb_round(gauche(a)) + 1
+        return max(nb_rounds(gauche(a)),nb_rounds(droit(a))) + 1
 
 def occurrences(a, nom):
     """ Arbre, str -> int
     Renvoie le nombre d'occurrences de nom dans a """
-    pass
+    if est_vide(a):
+        return 0
+    else:
+        if etiquette(a) == nom:
+            return 1 + occurrences(gauche(a),nom) + occurrences(droit(a),nom)
+        else:
+            return  occurrences(gauche(a),nom) + occurrences(droit(a),nom)
+        # return (etiquette(a) == nom) + occurrences(gauche(a),nom) + occurrences(droit(a),nom)
 
 def nombre_matchs(a, nom):
     """ Arbre, str -> int
