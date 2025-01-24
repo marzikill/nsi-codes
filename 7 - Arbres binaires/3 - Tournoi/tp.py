@@ -116,11 +116,23 @@ def parcours_largeur(a):
 def recherche_noeud(a, nom):
     """ Arbre, str -> Arbre
     Renvoie le sous-arbre de a dont la racine a pour étiquette nom et est de profondeur minimale dans a """
-    pass
+    # Renvoie None quand nom n'est pas présent dans a
+    file = [a]
+    while not file == []:
+        A = file.pop(0)
+        # Traitement
+        if etiquette(A) == nom:
+            return A
+        if not est_vide(gauche(A)): 
+            file.append(gauche(A))
+        if not est_vide(droit(A)):
+            file.append(droit(A))
 
 def joueurs_vaincus(a, nom):
     """ Arbre, str -> [str]
     Renvoie la liste des joueurs vaincus par nom dans la compétition d'arbre a """
-    pass
+    a = recherche_noeud(a, nom)
+    if a is not None:
+        return vaincus_gagnant(a) 
 
 # À finir pour vendredi !
