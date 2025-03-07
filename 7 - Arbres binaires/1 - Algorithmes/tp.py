@@ -12,7 +12,7 @@ a3 = Arbre(1,
             Arbre(12, None, None),
             Arbre(9, None, None)),
         Arbre(8,
-            Arbre(7, None, None),
+            Arbre(12, None, None),
     None)))
 a4 = Arbre(9,
            Arbre(7, None, None),
@@ -107,7 +107,16 @@ def maximum(a):
 def est_egal(a1, a2):
     """ Arbre, Arbre -> bool
     Détermine si les arbres a1 et a2 sont identiques """
-    pass
+    if est_vide(a1) and est_vide(a2):
+        return True
+    # cas de base inutile 
+    elif est_vide(a1) ^ est_vide(a2):
+        # ^ : XOR
+        return False
+    else:
+        sag_egaux = est_egal(gauche(a1), gauche(a2))
+        sad_egaux = est_egal(droit(a1), droit(a2))
+        return etiquette(a1) == etiquette(a2) and sag_egaux and sad_egaux
 
 def est_egalf(a1, a2):
     """ Arbre, Arbre -> bool
@@ -115,17 +124,54 @@ def est_egalf(a1, a2):
     pass
 
 def contenu(a, d):
-    """ Arbre, dict -> Nonetype
+    """ Arbre, dict -> None
     Ajoute à d le contenu de a """
-    pass
+    if est_vide(a):
+        return None
+    else:
+        if etiquette(a) in d:
+            d[etiquette(a)] += 1
+        else:
+            d[etiquette(a)] = 1
+        contenu(gauche(a), d)
+        contenu(droit(a), d)
+        return None
+       
+
+def est_dico_inclu(d1, d2):
+    """ dict, dict -> bool
+    Toutes les clés de d1 sont présentes dans d2 et
+    sont associées à la même valeur.
+    d1 est 'inclus' dans d2 """
+    for k in d1:
+        if k not in d2 or d1[k] != d2[k]:
+            return False
+    return True
 
 def est_dico_egal(d1, d2):
-    """ dict, dict -> bool
-    Détermine si les dictionnaires d1 et d2 sont égaux """
-    pass
+    return est_dico_inclu(d1, d2) and est_dico_inclu(d2, d1)
+
+def est_egalc(a1, a2):
+    d1 = dict()
+    contenu(a1, d1)
+    d2 = dict()
+    contenu(a2, d2)
+    return est_dico_egal(d1, d2)
+    
+
+
+
+
+
+
+
+
+
+
+
+
 
 def est_egalc(a1, a2):
     """ Arbre, Arbre -> bool
     Renvoie True ssi les arbres a1 et a2 ont le même contenu """
     pass
-
