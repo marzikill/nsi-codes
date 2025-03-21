@@ -3,12 +3,21 @@ from ds import *
 def tab_est_trie(tab):
     """ [int] -> bool
     Détermine si le tableau tab est trié par ordre croissant. """
-    pass
+    for i in range(len(tab) - 1):
+        if tab[i] > tab[i + 1]:
+            return False
+    return True
 
 def liste_est_triee(l):
     """ Liste -> bool
     Détermine si la liste l est triée """
-    pass
+    if est_vide(l) or est_singleton(l):
+        return True
+    else:
+        inter = liste_est_triee(queue(l))
+        if tete(l) > tete(queue(l)):
+            return False
+        return True
 
 def tri_insertion_iter(tab):
     """ [int] -> [int]
