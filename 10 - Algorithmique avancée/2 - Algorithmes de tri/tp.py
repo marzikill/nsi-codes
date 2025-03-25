@@ -131,24 +131,78 @@ def supprime_tout(l, e):
 def tri_selection_rec(l):
     """ Liste -> Liste
     Trie la liste l (tri par sélection) """
-    pass
-# ∧
-# |
-# À finir pour mardi 25
+    if est_vide(l) or est_singleton(l):
+        return l
+    else:
+        mini = minimum(l)
+        lreste = supprime(l, mini)
+        lreste_trie = tri_selection_rec(lreste)
+        return ajoute(lreste_trie, mini)
+    
+def tri_selection_rec_sans_doublons(l):
+    """ Liste -> Liste
+    Trie la liste l (tri par sélection) """
+    if est_vide(l) or est_singleton(l):
+        return l
+    else:
+        mini = minimum(l)
+        lreste = supprime_tout(l, mini)
+        lreste_trie = tri_selection_rec_sans_doublons(lreste)
+        return ajoute(lreste_trie, mini)
 
 def diviser(l):
     """ Liste -> Liste, Liste
     Divise la liste en deux listes """
-    pass
+    if est_vide(l):
+        return l, l
+    elif est_singleton(l):
+        return l, creer_vide()
+    else:    
+        # appel récursif
+        inter = diviser(queue(queue(l)))
+        # inter est un tuple ! (de listes)
+        l1 = ajoute(inter[0], tete(l))
+        l2 = ajoute(inter[1], tete(queue(l)))
+        return l1, l2
+
+# la première liste est diviser(l)[0]
+# la deuxième liste est diviser(l)[1]
 
 def fusionner(l1, l2):
     """ Liste, Liste
+    On suppose que l1 et l2 sont triées
     Renvoie la liste des éléments de l1 et l2 triés """
-    pass
-
+    if est_vide(l1):
+        return l2
+    elif est_vide(l2):
+        return l1
+    else:
+        if tete(l1) < tete(l2):
+            fusionne = fusionner(queue(l1), l2)
+            return ajoute(fusionne, tete(l1))
+        else:
+            fusionne = fusionner(l1, queue(l2))
+            return ajoute(fusionne, tete(l2))
+        
 def tri_fusion(l):
     """ Liste -> Liste
     Trie la liste l (tri fusion) """
-    pass
+    if est_vide(l) or est_singleton(l):
+        return l
+    else:
+        l1, l2 = diviser(l)
+        inter1 = tri_fusion(l1)
+        inter2 = tri_fusion(l2)
+        return fusionner(inter1, inter2)
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
 
