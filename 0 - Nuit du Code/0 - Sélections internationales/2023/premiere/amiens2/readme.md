@@ -1,0 +1,3 @@
+BIENVENUE SUR NOTRE JEU NOMMÉE " Fisho"
+Le but du jeu est de manger le plus de poisson possible dans le temps imparti qui est d\'une minute et donc de faire le meilleur score possible. A chaque dix poissons mangés; on augmente notre niveau et on passe au niveau supérieur en se transformant en un poisson plus gros. Les poissons à manger apparaissent par la droite et notre poisson apparait par la gauche. On peut déplacer notre poisson partout sur l\'écran de jeu grâce au flèches de direction sur le clavier. Pour arrêter le jeu on peut appuyer sur la touche A.
+LES FISCHOU (Ilyes OMARI & Antoine RAMBOUR)

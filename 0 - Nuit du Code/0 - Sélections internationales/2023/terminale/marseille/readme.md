@@ -1,0 +1,2 @@
+Un chasseur de trésor s\'aventure dans les contrées lointaines. Déplacez-vous avec habileté grâce aux flèches du clavier. Ramassez les clés, puis ouvrez les portes pour progresser dans les profondeurs de la Terre. Mais prenez garde à la malédiction du temps ! Celle-ci pourrait mettre un terme à votre aventure. Ramassez les diamants sacrés du temps. En absorbant leur énergie, vous pourrez contrer la malédiction.
+LesNerds

@@ -1,0 +1,2 @@
+Le but du jeu est de survivre le plus longtemps dans tokyo la nuit. L'environnement est peuplé d'enemmis des ninjas ainsi que des rats on va pouvoir se deplacer avec les touches Q à gauche et D à droite ou les fleches du claviers. On pourra sauter avec espace. On pourra sortir une épée afin de pouvoir tué les enemmis avec E. Le but est d'avoir le score le plus haut. Vous avez 3 vies. Bonne chance.
+MARSE
