@@ -1,8 +1,44 @@
+from ds import Graphe, Pile, File
+from random import randint
+
 def arcs_vers_graphe_no(aretes):
     """ [(Sommet, Sommet)] -> Graphe
     Sommet peut être de type int ou str
     Construit le graphe non orienté dont on donne la liste des arêtes. """
-    pass
+    g = Graphe()
+    for arete in aretes:
+        a, b = arete[0], arete[1]
+        g.ajouter_sommet(a)
+        g.ajouter_sommet(b)
+        g.ajouter_arc(a, b)
+        g.ajouter_arc(b, a)
+    return g
+
+aretes = [(0, 1), (0, 3), (0, 6),
+    (0, 9), (1, 4), (1, 6),
+    (2, 5), (3, 6), (3, 8),
+    (4, 7), (5, 6), (5, 7)]
+g1 = arcs_vers_graphe_no(aretes)
+g1.decrire()
+
+aretes = [(0, 1), (0, 5),
+    (1, 2), (1, 6), (1, 5), (2, 3),
+    (2, 7), (2, 6), (3, 7), (3, 4),
+    (4, 5), (4, 6), (4, 7), (6, 7)]
+g2 = arcs_vers_graphe_no(aretes)
+g2.decrire()
+
+aretes = [(0, 6), (0, 1),
+    (0, 2), (0, 7), (1, 2), (1, 6),
+    (1, 8), (1, 4), (2, 4), (2, 5),
+    (2, 7), (3, 8), (4, 5),(4, 7)]
+g3 = arcs_vers_graphe_no(aretes)
+g3.decrire()
+
+aretes = [(0, 1), (0, 2),
+    (1, 2), (1, 3), (2, 3), (4, 5)]
+g4 = arcs_vers_graphe_no(aretes)
+g4.decrire()
 
 def parcours_aleatoire(G, depart, nombre_sauts):
     """ Graphe, Sommet, int -> {Sommet: int}
