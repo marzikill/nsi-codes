@@ -1,0 +1,7 @@
+Une introduction à pyxel
+https://www.cahiernum.net/CGS8UD
+
+Pyxel en vidéo (anglais)
+Explique les sprites et les tilemaps.
+https://www.youtube.com/watch?v=gXpe9HZ3Au8&list=PLp_k-oh2bNHairxWQK_SYL5Me_OBJYJs8
+

@@ -1,0 +1,1232 @@
+#+TITLE:               Nuit du Code 2022
+#+AUTHOR:              Florian Picard
+#+LaTeX_CLASS:         divers
+
+#+LATEX_HEADER: \renewcommand{\destinataire}{Terminales NSI}
+#+LATEX_HEADER: \renewcommand{\numberdoc}{}
+#+LATEX: \vspace{-1cm}
+
+* Trucs utiles
+
+#+BEGIN_SRC emacs-lisp
+(defun directoire_fichiers ()
+  (concat (org-entry-get nil "annee" t) "/"
+          (org-entry-get nil "niveau" t) "/"
+          (org-entry-get nil "ville" t) "/"))
+#+END_SRC
+
+#+RESULTS:
+: directoire_fichiers
+
+#+name: dl_exec_python
+#+begin_src emacs-lisp 
+(shell-command (concat "cd " (directoire_fichiers) " && python get_files.py"))
+#+end_src
+
+# #+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+# #+END_SRC
+
+# #+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+# #+END_SRC
+
+# #+call: dl_exec_python()
+
+
+* Sélection 2022
+:PROPERTIES:
+:annee:  2022
+:END:
+** Première 
+:PROPERTIES:
+:niveau:   premiere
+:END:
+*** Lycée Claudel
+:PROPERTIES:
+:ville:  ottawa
+:END:
+Ottawa 
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = '6z5e-9gmz'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/GrowyGardens.py')
+with open('GrowyGardens.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/GrowyGardens.pyxres')
+with open('GrowyGardens.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "GrowyGardens.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Bienvenue dans notre jardin en pleine croissance : Growy Gardens! L'objectif du jeu est de faire pousser le plus de plantes possible en 3 minutes en les plantant rapidement et en assommant les corbeaux qui ont faim! Vous pouvez suivre votre score en bas à gauche. Pour vous déplacer utilisez les touches WASD ou les flèches. Vous pouvez effectuer trois actions : arroser une plante en appuyant sur la touche 1 ou J, planter des graines en appuyant sur la touche 2 ou K, et assommer un corbeau avec la touche 3 ou L. Quand les bacs a plantes sont sèches vous devez les arroser pour que votre plante puisse grandir. Une fois que la plante a grandi, courrez dessus pour la prendre et regardez votre score augmenter. Bonne chance!
+GROWYGARDENS
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Lycée Montesquieu
+:PROPERTIES:
+:ville:    libourne
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'cm2d-ut36'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/Nuit du c0de 2022V1.py')
+with open('Nuit du c0de 2022V1.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/graphisme.pyxel.pyxres')
+with open('graphisme.pyxel.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "Nuit du c0de 2022V1.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Le but du jeu est de tuer des monstres marins à l'aide d'un poulpe rose (tout mignon) qui peut se déplacer et se tourner sur les côtés, vers le haut et le bas ainsi que sur ses diagonales. Des salves d'oursins agressifs arrivent à chaque nouveau niveau. Ils peuvent arriver de tout les côtés. Attention! Si un enemis vous touche , vous mourrez. Les enemis rebondissent sur les murs pour repartir à l'attaque. A chaque salve de monstres marins détruite, Un nouveau niveau débute, plus dur jusqu'au bosse final. La touche E sert a quitter le jeu, la touche R sert à recommencer lorsque que l'on a perdu, la touche D pour tourner de 45 degrès dans le sens des aiguilles d'une montre, et Q pour le sens inverse. Enfin, les flèches servent à se déplacer. Bisous !
+SAM ON T'AIME DE OUF <3
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Lycée Jean Zay
+:PROPERTIES:
+:ville:    orleans
+:END:
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = '8cls-ymhp'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/NUIT DU CODE.py')
+with open('NUIT DU CODE.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/tokyores.pyxres')
+with open('tokyores.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "NUIT DU CODE.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Le but du jeu est de survivre le plus longtemps dans tokyo la nuit. L'environnement est peuplé d'enemmis des ninjas ainsi que des rats on va pouvoir se deplacer avec les touches Q à gauche et D à droite ou les fleches du claviers. On pourra sauter avec espace. On pourra sortir une épée afin de pouvoir tué les enemmis avec E. Le but est d'avoir le score le plus haut. Vous avez 3 vies. Bonne chance.
+MARSE
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Lycée en Forêt
+:PROPERTIES:
+:ville:    montargis
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'tbxc-m6sv'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/nuit du code.finalpy.py')
+with open('nuit du code.finalpy.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/perso.pyxres')
+with open('perso.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "nuit du code.finalpy.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Le but est d'atteindre la pièce à l'aide de la touche espace pour sauter et des touches directionnelles pour se déplacer horizontalement. Un scénario est présenter: le personnage doit récupérer toutes les pièces pour repartir chez lui.
+ARA
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Lycée Français International de Tokyo
+:PROPERTIES:
+:ville:    tokyo
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'vw6j-5lhg'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/xiaolongbao.py')
+with open('xiaolongbao.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/xiaolongbao.pyxres')
+with open('xiaolongbao.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "xiaolongbao.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Le joueur contrôle un bonbon rose à travers diverses aventures.
+Dans le menu des niveaux :
+- avec la touche V on arrive dans les vestiaires, où on peut choisir avec les flèches un costume pour le bonbon, qui sera sélectionné en pressant sur ENTER
+- avec la touche L on accède au mode libre, où tous les niveaux sont déjà accessibles
+- avec la touche N on joue dans le mode normal, c'est-à-dire qu’il faut réussir un niveau pour débloquer le suivant. La progression est enregistrée.
+En cliquant sur les numéros des niveaux disponibles on lance le jeu auquel correspond le chiffre.
+À tout moment, vous pouvez revenir au menu en cliquant sur la touche M.
+La touche Q vous permet de quitter le jeu.
+Nous vous proposons également une petite mélodie de qualité :)
+XIAOLONGBAO
+#+END_SRC
+
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Lycée Français International André Malraux
+:PROPERTIES:
+:ville:    rabat
+:END:
+
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'uhr7-cn2v'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/main.py')
+with open('main.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/3.pyxres')
+with open('3.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "main.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Jeu de plateforme en 2D qui se joue sur deux mondes différents à la fois. Lors de votre aventure dans notre 1er niveau, vous tomberez sur de multiples obstacles à franchir et ennemis à battre. Toutefois, vous devrez vous munir de votre mystérieux pouvoir afin de franchir certains d'entre eux... Voyagez à travers les mondes afin d'arriver à la sortie de nos parcours ! La AMA vous souhaite une excellente et agréable expérience de jeu. Se déplacer à droite : Flèche de droite. Se déplacer à gauche : Flèche de gauche. Sauter : Touche Espace. Changer de dimension : Touche A
+LLC COURBE
+#+END_SRC
+
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Lycée Vaugelas
+:PROPERTIES:
+:ville:    chambery
+:END:
+
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'pcjb-kdwh'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/aim_training.py')
+with open('aim_training.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/2.pyxres')
+with open('2.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "aim_training.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+NOUS AVONS CONCEPTUALISÉ UN "AIM TRAINER". IL S'AGIT D'UN JEU OU L'ON DOIT CLIQUER SUR LES MONSTRES QUI APPARAISSENT A L'ÉCRAN. LORSQUE L'ON CLIQUE DESSUS LE MONSTRE DISPARAIT. PLUS LE JEU AVANCE PLUS LE NOMBRE D'ENNEMI AUGMENTE. SI UN MONSTRE ARRIVE EN BAS DE L'ÉCRAN ON PERD UNE VIE PUIS AU BOUT DE TROIS VIE PERDU LA PARTIE EST TÉRMINÉE. POUR CLIQUER SUR LES MONSTRES IL SUFFIT DE DIRIGER LE CURSEUR AVEC LA SOURIS.
+LOSCRAKOS
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Lycée en Forêt
+:PROPERTIES:
+:ville:    montargis2
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'tbxc-vw2d'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/jeu_nuit_code.py')
+with open('jeu_nuit_code.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/1.pyxres')
+with open('1.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "jeu_nuit_code.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Bonjour et bienvenue sur EcoInvasion !
+Tout d'abord le but du jeux est de récupérer les pieuvres rose et laisser les oiseaux aller à la mer. Utilisez les flèches pour vous déplacer. Pour chaque oiseaux ramasser vous perdez 3 de score. Pour chaque extraterrestre détruit vous gagnez 1 ! A partir de 10 de score si vous laissez passer un oiseau dans la mer vous gagnez 1 et au contraire si vous laissez passer une extraterrestre vous perdez 4. Si vous redescendez en dessous de 10 de score ce mode se désactive. La vitesse augmente de 20% tout les 10 de score. BOSS : Tout les 15 de score il y'a 2 fois plus de monstres. Pour une expérience plus immersive veuillez vous munir d'écouteurs
+YANNISB-NOAHDJ-THÉOT
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+** Terminale NSI
+:PROPERTIES:
+:niveau:   terminale
+:END:
+
+*** Lycée Dumont d'Urville
+:PROPERTIES:
+:ville:    caen
+:END:
+
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'x9tr-rayk'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/nuit_du_code.py')
+with open('nuit_du_code.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/arthur_mathis.pyxres')
+with open('arthur_mathis.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "nuit_du_code.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Appuyer sur les flèches directionnelles pour vous déplacer. "Espace" pour tirer, "D" pour acheter un boost de degat contre 250 d'argent, "A" pour acheter un boost d'argent contre 500 d'argent et "V" pour acheter un boost de vitesse contre 500 d'argent (limité à 4 achat). Le but est de faire le meilleur score tout en changeant de salle. Pour gagner du score il faut éliminer des ennemis mais attention à ne pas les touchers ! Appuyer sur "R" pour recommencer à tout moment et "Q" pour quitter.
+MIROU
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Le Bon Sauveur
+:PROPERTIES:
+:ville:    levesinet
+:END:
+
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'aunh-89cs'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/main.py')
+with open('main.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/main.pyxres')
+with open('main.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "main.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+KnockOut !
+Jeu de combat et d'éjection sur plateforme
+Joueur 1:
+z : saut
+q : se déplacer à gauche
+d : se déplacer à droite
+f : changer de capacités (passer de corps à corps à attaque à distance et inversement)
+a : attaque rapide
+e : attaque lourde # Non terminée
+
+Joueur 2:
+8 (numpad) : saut
+4 (numpad) : se déplacer à gauche
+6 (numpad) : se déplacer à droite
++ (numpad) : changer de capacités (passer de corps à corps à attaque à distance et inversement)
+7 : attaque rapide
+9 : attaque lourde # Non terminée
+
+Pour gagner, il faut éjecter 3 fois son adversaire du terrain.
+Plus on le tape, plus son adversaire prendra de dégâts et donc sera éjecté loin!
+Lorsqu'un joueur n'a plus de vie, le jeu se ferme automatiquement
+GHOST/DEV
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Lycée Vaugelas
+:PROPERTIES:
+:ville:    chambery
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'pcjb-qbel'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/main.py')
+with open('main.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/1.pyxres')
+with open('1.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "main.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Le jeu ce joue à 2. L'objectif est de détruire le chateau adverse, pour ce faire nous invoquons des soldats qui ont tous un cout et des statistiques différents. Ce jeu utilise une monnaie par joueur. On peut gagner de ces pièces chaque seconde ou en tuant une unitée adverse.
+Unités:
+---
+nom | prix | stats
+
+soldat | 50 | basique
+géant | 500 | bcp de vie mais lent
+oiseau | 350 | rapide mais moins de vie
+boss | 1000 | surpuissant
+
+Touches:
+---
+Vert: A-Z-E-S
+Rouges: I-O-P-L.
+VAUGELAS LOUIS&OSCAR
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+
+*** Lycée Montesquieu
+:PROPERTIES:
+:ville:    libourne
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'cm2d-dzp3'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/Jeu_v4.py')
+with open('Jeu_v4.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/1v12.pyxres')
+with open('1v12.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "Jeu_v4.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Utiliser :
+-les flèches directionnelles pour se déplacer
+-la barre espace pour taper à l'épée
+Les portes sont active seulement après la mort de l'intégralité des monstres de la salle. Lors de l'apparition dans une salle, un temps d'invincibilité vous est octroyé, mais vous ne pouvez plus utiliser votre épée. Si un monstre vous touche, vous mourez =)
+NEW FOLDER
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Lycée Choiseul
+:PROPERTIES:
+:ville:    tours
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'nprk-3d6c'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/NuitducodeLyceeChoiseulTours.py')
+with open('NuitducodeLyceeChoiseulTours.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/5.pyxres')
+with open('5.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "NuitducodeLyceeChoiseulTours.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Le jeu est un smash bros like avec 2 personnage pouvant sauter et tirer avec chaque tir enlevant 1 hp a la personne adverse. Le joueur 1 se dirige avec fleche droite, fleche gauche, control et M. Le joueur 2 se dirige avec D, Q, space et E.
+LYCEE CHOISEUL TOURS
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Lycée André Maurois
+:PROPERTIES:
+:ville:    elbeuf
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = '29yv-n3le'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/pioche bonome leo lola.py')
+with open('pioche bonome leo lola.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/bonome.pyxres')
+with open('bonome.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "pioche bonome leo lola.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Notre jeu s'appelle pioche-bonome le but est de trouver la pièce derrière la terre en minant en appuyant sur A, le personnage s'appelle tohnya et peut dire hi en appuyant sur h et un coeur en appuyant sur L, il peut utiliser un jet pack en restant appuyé sur espace.
+L2
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Lycée Français International de Tokyo
+:PROPERTIES:
+:ville:    tokyo
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'vw6j-al4y'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/ndc.py')
+with open('ndc.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/')
+print(py.content.decode())
+os.system('pyxel run "ndc.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Ce jeu consiste a faire avancer le joueur vers l'arrivée en traversant les obstacles. Pour cela, il faut cliquer avec la souris sur un mur ou plafond pour faire bouger le joueur comme s'il s'accrochait a une liane. Plus le joueur appuie longtemps sur la souris, plus il pourra s’approcher du point clique et plus il pourra partir loin.Il peut egalement se deplacer avec les touches a et d. Il existe certains sols fait de lave, si le joueur le touche il meurt, l'environnement est également un espace toxique rempli de gaz, au bout d'un certain temps si le joueur n'arrive pas a reprendre de l'air, il meurt par intoxication et doit repartir du départ.
+UTACHIN17
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Le Bon Sauveur
+:PROPERTIES:
+:ville:    levesinet2
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'aunh-kwcz'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/star captain.py')
+with open('star captain.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/2.pyxres')
+with open('2.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "star captain.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Utilisez les flèches pour vous déplacer, espace pour tirer. Les astéroïdes en fond ne sont pas des obstacles. Vous avez 20 munitions, une fois que vous les avez toutes utilisées, elles se rechargent en une seconde. Vous avez 6 points de vie, les ennemis font des dégâts allant de 1 à 6 lorsqu'ils vous touchent ou vous tirent dessus. Les ennemis arrivent par série de 10, suivis d'un boss, avec une difficulté progressive. Il y a deux types d'ennemis différents par niveau. Après les boss 1 et 3, vous recevez une amélioration de la puissance de tir. Vous gagnez après avoir vaincu le 5e boss.
+STAR START
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+* Sélection 2023
+:PROPERTIES:
+:annee:    2023
+:END:
+** Première
+:PROPERTIES:
+:niveau:   premiere
+:END:
+
+*** Lycée Français International de Tokyo
+:PROPERTIES:
+:ville:    tokyo
+:END:
+
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'x83p-36dg'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/4.pyxres')
+with open('4.pyxres', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/ndc.py')
+with open('ndc.py', 'wb') as file:
+    file.write(pyxres.content)
+# print(py.content.decode())
+os.system('pyxel run "ndc.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Le but du jeu est d\'avoir le plus de score possible en esquivant les blocs.
+Avec les flèches haut et bas, on peut faire bouger le bonhomme en haut et en bas.
+Puis, a chaque fois que le score atteint un multiple de 10, vous passez au niveau suivant et la vitesse augmente.
+Il sera plus difficile de les esquiver mais vous avez des super pouvoirs.
+Toute les 3 secondes vous pouvez avec la touche:
+"a" efface quelques blocs en longueur
+"s" efface quelques blocs en hauteur
+"d" efface quelques gros blocs carres
+Skymask
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+
+
+*** Lycée Gustave JAUME
+:PROPERTIES:
+:ville:    pierrelatte
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'pxe8-ecxp'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/ndc.py')
+with open('ndc.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/theme.pyxres')
+with open('theme.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+# print(py.content.decode())
+os.system('pyxel run "ndc.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Survive The Hord est un jeu de plateforme entre 2 joueurs ou le but est d ‘avoir un meilleur score que l’adversaire. Pour augmenter son score on peut survivre le plus longtemps possible ou alors d’éliminer des ennemis en leur tirant dessus.
+
+Touche joueur 1 : Z = sauter
+
+D = aller vers la droite
+
+Q = aller vers la gauche
+
+F = tirer
+
+Touche joueur 2 : Fleche du haut = sauter
+
+Fleche de droite = aller à droite
+
+Fleche de gauche = aller à gauche
+
+Fleche du bas = tirer
+
+Le joueur étant le dernier sur le tapis gagne ! (Il y a une compétition bonus avec le score affiché à la fin)
+Faure, Ponthieu, Zarie
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Lycée Robert de Luzarches
+:PROPERTIES:
+:ville:    amiens
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'xf38-d53b'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/2.pyxres')
+with open('2.pyxres', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/ndc.py')
+with open('ndc.py', 'wb') as file:
+    file.write(pyxres.content)
+# print(py.content.decode())
+os.system('pyxel run "ndc.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Personnages :
+- Joueur féminin
+- Fantômes (ennemis)
+Récit/contexte :
+Le joueur, munis du pouvoir de voler dans les airs, se doit d\'éliminer les fantômes qui souhaitent envahir un village proche.
+Nous avons décidé de représenter un personnage féminin car ce jeu est une métaphore aux violences faites aux femmes de nos jours. Le village ici représente les droits des femmes que les gens essaient de défendre aujourd\'hui et les fantômes représentent les individus qui s\'en prennent à ces femmes. Bien que des hommes aussi défendent ces droits de nos jours, ici le jeu montre un personnage féminin en héroïne.
+Règles :
+30 ennemis vont apparaître et vous allez devoir tous les éliminer avant qu\'un des leurs n\'arrive jusqu\'à vous ! Vous ne pourrez bouger que verticalement. Le nombre d\'ennemis restants sera affiché en haut à gauche de votre écran.
+Commandes :
+Tirer --> Espace
+Bouger en haut --> flèche du haut
+Bouger en bas --> flèche du bas
+Équipe de choc
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 1
+
+*** Lycée Paul Valéry
+:PROPERTIES:
+:ville:    meknes
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'cen6-kv75'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/ndc.py')
+with open('ndc.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/ressources.pyxres')
+with open('ressources.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "ndc.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Le menu principal vous permet de choisir entre différents modes de jeu :
+PLAY : Affrontez vos amis dans des combats de sumo.
+d: pour voir la documentation.
+
+Règles du jeu:
+Utiliser les touches ZQD pour le personnage n°1 et les flèches ← ↑ → pour le personnage n°2.
+Utiliser ↓ ou S pour pousser votre adversaire.
+Entrez dans l\'arène et préparez-vous à affronter vos amis dans des combats de sumo passionnants.
+Pour gagner, poussez votre adversaire hors du ring ou faites-le tomber pour remporter la victoire.
+Le joueur qui remporte le plus de rounds devient le champion du mode multijoueur.
+Pour quitter la page, utilisez la touche “Echap”
+
+Conseils pour jouer :
+Étudiez les mouvements de votre adversaire pour anticiper ses actions.
+Utilisez les bords du ring à votre avantage pour pousser votre adversaire hors du ring.
+Restez concentré et réactif pour réagir rapidement aux mouvements de votre adversaire.
+Maintenant que vous connaissez les règles de SUMO CLASH, préparez-vous à plonger dans l\'action et à profiter au maximum de ce jeu passionnant !
+Adam_Ghali_Sami
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Lycée Marguerite de Valois
+:PROPERTIES:
+:ville:    angouleme
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'bqp5-7zaj'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/ndc.py')
+with open('ndc.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/theme.pyxres')
+with open('theme.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "ndc.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+BEAT EAT (thème: le plus gros gagne) un jeu à 2, le premier qui mange jusqu\'à l\'explosion remporte la partie !
+Mouvements : Joueur 1 (ZQSD), Joueur 2 (flèches directionnelles)
+Arthur Eliott
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Lycée polyvalent Frédéric Joliot-Curie
+:PROPERTIES:
+:ville:    dammarie-les-lys
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = '27cx-9vs2'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/theme.pyxres')
+with open('theme.pyxres', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/v2.py')
+with open('v2.py', 'wb') as file:
+    file.write(pyxres.content)
+# print(py.content.decode())
+os.system('pyxel run "v2.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Nous avons choisi de travailler sur le thème « Le dernier à l\'écran gagne ».
+Notre jeu est un jeu de combat de type « plateformer » qui se joue en 1 contre 1 à deux joueurs.
+Le but du jeu est de faire sorti r son adversaire de l’écran 3 fois, afin d’épuiser son nombre de vies qui est de trois.
+Chaque joueur peut se déplacer de droite à gauche :
+- « flèche de droite » pour aller à droite et « flèche de gauche » pour aller à gauche pour le joueur 1
+- « d » pour aller à droite et « q » pour aller à gauche pour le joueur 2
+Ils peuvent aussi sauter (flèche du haut pour le joueur 1 et espace pour le joueur 2 ou « b » à la manette ) et possèdent 2 sauts.
+Pour attaquer son adversaire, on peut effectuer deux types d’attaques :
+- L’attaque de corps à corps (flèche du bas pour le joueur 1 ou espace pour le joueur 2 ou « a » à la manette )
+- L’attaque à distance ( ctrl pour le joueur 1 ou a pour le joueur 2 ou « x » à la manette )
+Chaque joueur est associé à un pourcentage. Plus ce pourcentage est élevé, plus le joueur est projeté loin par les attaques de son ennemi. Les projectiles infligent 5% et les attaques de corps à corps infligent 10%.
+
+Smashing'out
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Lycée International de Valbonne
+:PROPERTIES:
+:ville:    valbonne
+:END:
+
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = '48yg-ptrl'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/ndc.py')
+with open('ndc.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/theme.pyxres')
+with open('theme.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "ndc.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+NUIT DU CODE - 2023 - Tanks on Ice
+Valentin Huber, Samuel Minonne, Nolhan Brulé
+
+I - Our idea
+
+We decided to pick the “Le dernier à l\'écran gagne” theme and make our own graphics.
+We created a game where two players play against each other, using the same keyboard. They are going to drive tanks on ice, and their goal is going to be to eject the enemy tank from the ice, or to reduce its HP from 10 to 0.
+
+The drivers will have to choose between two drive modes. One is an axial mode, and enables the drivers to go any direction. The other is a rotational mode, with the possibility to turn by 45 degrees, and to shoot while going backward.
+
+II - Controls
+To choose your drive mode, it is possible to click on the yellow button. To launch the game, click on the button “Play”.
+
+The red tank uses the numpad with the keys “8” and “5” to go forward and backwards, and the keys “4” and “6” to turn, “0” to shoot.
+The green one uses the keys z, q, s and d in the same pattern, space to shoot.
+
+The axial drive uses the keys “z”,”q”, “s”, “d” and “8”,”4”,”5”, “6”, too, as well as the keys 7,9,3 and 1 to go diagonally with the numpad, and “a”,”e”,”c” and “w” with the other side of the keyboard.
+
+At the end of the game, it is possible to replay by pressing “r”
+BaguetTechs
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Lycée Robert de Luzarches
+:PROPERTIES:
+:ville:    amiens2
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'xf38-q42m'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/images.pyxres')
+with open('images.pyxres', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/jeux fischou.py')
+with open('jeux fischou.py', 'wb') as file:
+    file.write(pyxres.content)
+# print(py.content.decode())
+os.system('pyxel run "jeux fischou.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+BIENVENUE SUR NOTRE JEU NOMMÉE " Fisho"
+Le but du jeu est de manger le plus de poisson possible dans le temps imparti qui est d\'une minute et donc de faire le meilleur score possible. A chaque dix poissons mangés; on augmente notre niveau et on passe au niveau supérieur en se transformant en un poisson plus gros. Les poissons à manger apparaissent par la droite et notre poisson apparait par la gauche. On peut déplacer notre poisson partout sur l\'écran de jeu grâce au flèches de direction sur le clavier. Pour arrêter le jeu on peut appuyer sur la touche A.
+LES FISCHOU (Ilyes OMARI & Antoine RAMBOUR)
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+** Terminale
+:PROPERTIES:
+:niveau:   terminale
+:END:
+
+*** Lycée Marseilleveyre
+:PROPERTIES:
+:ville:    marseille
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'pt4u-x2dz'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/2.pyxres')
+with open('2.pyxres', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/ndc.py')
+with open('ndc.py', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "2.pyxres"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Un chasseur de trésor s\'aventure dans les contrées lointaines. Déplacez-vous avec habileté grâce aux flèches du clavier. Ramassez les clés, puis ouvrez les portes pour progresser dans les profondeurs de la Terre. Mais prenez garde à la malédiction du temps ! Celle-ci pourrait mettre un terme à votre aventure. Ramassez les diamants sacrés du temps. En absorbant leur énergie, vous pourrez contrer la malédiction.
+LesNerds
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 1
+
+*** Lycée Évariste Galois
+:PROPERTIES:
+:ville:    sartrouville
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'mfj3-lfx8'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/5.pyxres')
+with open('5.pyxres', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/projet_NDC.py')
+with open('projet_NDC.py', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "5.pyxres"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Bienvenue dans les ruines d\'un très ancien royaume.
+
+Vous êtes le fantôme habitant ce labyrinthe. Pour vous déplacer, utilisez les flèches du clavier afin de trouvez un trésor perdu au fil du temps. Etant un fantôme vous avez une vision limitée mais suite à un maléfice vous ne pouvez pas traverser les murs. ce trésor pourrait peut-être vous rendre vos pouvoirs, c\'est pourquoi vous devez le trouvez. Malheureusement il est fermé avec deux clefs éparpillées. Pour acceder aux labyrinthes qui conduisent au trésor il faut attraper les clefs.
+
+Bonne chance !!!
+
+- L\'équipe Estraboise -
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 1
+
+*** Lycée Van Gogh
+:PROPERTIES:
+:ville:    aubergenville
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = '42be-sek3'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/2_edit.pyxres')
+with open('2_edit.pyxres', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/main.py')
+with open('main.py', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "2_edit.pyxres"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Notre jeu est un "platformer" où le but est de finir les 3 niveaux le plus rapidement possible. Il faut récupérer la clé de chaque niveau avant d\'atteindre la porte permettant d\'accéder au niveau suivant.
+
+Les déplacements latéraux se font avec les touches Q et D ainsi que les flèches directionnelles. Le saut se fait avec la barre espace.
+Pour s\'accrocher aux blocs verts, il faut maintenir la touche Z ou la flèche du haut.
+TyranKorp2
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 1
+
+*** Collège Elhuyar, Lycée Cassin
+:PROPERTIES:
+:ville:    bayonne
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'g7jx-u3c8'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/5.pyxres')
+with open('5.pyxres', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/ndc.py')
+with open('ndc.py', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "5.pyxres"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Dans ce jeu vous pouvez controler le joueur avec Z,Q,S et D et vous attaquez avec J. Le but du jeu est de trouver le coffre tout en évitant ou en tuant les ennemies. Attention la difficulté augmente ! Avec une génération de monde aléatoire une adaptation sera nécessaire
+LES CRAKITOS
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 1
+
+*** Ensemble Baudimont Saint Charles
+:PROPERTIES:
+:ville:    arras
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'zade-2zp6'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/NDC.py')
+with open('NDC.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/theme.pyxres')
+with open('theme.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "NDC.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Pour Joueur 1 :
+Q pour aller à gauche
+D pour aller à droite
+Z pour sauter
+S pour s\'accroupir
+E pour attaque de corps à corps
+A pour attaque à distance
+
+Pour Joueur 2 :
+flèche de gauche pour aller à gauche
+flèche de droite pour aller à droite
+flèche du haut pour sauter
+flèche du bas pour s\'accroupir
+Rshift pour attaque à distance
+Contrôle droit pour attaquer au corps à corps
+Grootys
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Lycée Jean Monnet
+:PROPERTIES:
+:ville:    joue_les_tours
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'x3c6-wkem'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/NDC.py')
+with open('NDC.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/theme.pyxres')
+with open('theme.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "NDC.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Bienvenue dans BLOB STORY...
+
+Dans ce jeu, vous et votre adversaire incarnerez des BLOBs, créatures magiques de la forêt verte. Quel est l\'objectif de ce jeu, nous direz-vous ? Manger la plus grande quantité de pommes afin de devenir le roi des BLOBs, le plus gros... Pour vous déplacer dans cet univers, 2 possibilités s\'offrent à vous : déplacez-vous avec les touches flèches du clavier pour le BLOB bleu, ou avec les touches Z, Q, S et D pour le BLOB jaune.
+Attention, vous augmentez de taille après avoir mangé 4 pommes ! Cela vous ralentira cependant un peu, dans le but de laisser une chance à votre adversaire d\'attraper les pommes suivantes également ! Vous pouvez augmenter de taille 3 fois au cours du jeu. Le premier joueur ayant mangé 16 pommes gagne donc la partie.
+Bon appétit et bon courage !
+MOUTON CORP
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** lycée Jean Guéhenno
+:PROPERTIES:
+:ville:    fougeres
+:END:
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = 'zrnl-82lw'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/main.py')
+with open('main.py', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/my_resource.pyxres')
+with open('my_resource.pyxres', 'wb') as file:
+    file.write(pyxres.content)
+print(py.content.decode())
+os.system('pyxel run "main.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Nom : Death Journey
+Flèches gauche et droite pour bouger
+Espace pour sauter
+H pour interagir
+Les 2 Neurones
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+*** Lycée Kernanec
+:PROPERTIES:
+:ville:    marcq-en-baroeul
+:END:
+Marcq-en-Barœul - France
+
+#+BEGIN_SRC jupyter-python :session py :tangle (concat (directoire_fichiers) "get_files.py") :mkdirp yes :eval no
+import requests, os
+code = '2wnp-jx7m'
+site = 'https://www.nuitducode.net'
+url = site + '/storage/fichiers_pyxel/' + code
+py = requests.get(url + '/my_resource.pyxres')
+with open('my_resource.pyxres', 'wb') as file:
+    file.write(py.content)
+pyxres = requests.get(url + '/ndc.py')
+with open('ndc.py', 'wb') as file:
+    file.write(pyxres.content)
+# print(py.content.decode())
+os.system('pyxel run "ndc.py"')
+#+END_SRC
+
+#+BEGIN_SRC md :tangle (concat (directoire_fichiers) "readme.md") :mkdirp yes :eval no
+Notre jeu peut se jouer à 4 personnes :
+L\'objectif du jeu est d\'être le dernier joueur en vie.
+Les joueurs peuvent s\'éliminer entre eux en posant des bombes.
+
+Les bombes cassent les murs (roche) et tuent les joueurs.
+Si une bombe explose à côté d\'une autre bombe, l\'explosion déclanche l\'explosion de l\'autre bombe.
+
+Un joueur peut poser au maximum une seule bombe à la fois.
+
+En modifiant la constante PLAYER_COUNT, vous pouvez définir le nombre de joueurs.
+En modifiant la constante TIME_BEFORE_EXPLOSION, vous pouvez modifier le nombre de frame avant que la bombe explose
+
+le direction des joueur :
+joueur 1:
+direction :
+z : permet de monter
+s : permet d\'aller en bas
+q : permet d\'aller a gauche
+d : permet d\'aller en a droite
+a : pose la bombe
+
+joueur 2:
+direction :
+y : permet de monter
+h : permet d\'aller en bas
+g : permet d\'aller a gauche
+j : permet d\'aller en a droite
+t : pose la bombe
+
+joueur 3:
+direction :
+o: permet de monter
+l : permet d\'aller en bas
+k : permet d\'aller a gauche
+m : permet d\'aller en a droite
+i : pose la bombe
+
+joueur 4:
+direction :
+num8 : permet de monter
+num5 : permet d\'aller en bas
+num4 : permet d\'aller a gauche
+num6 : permet d\'aller en a droite
+num7 : pose la bombe
+RPMVikator
+#+END_SRC
+
+#+call: dl_exec_python()
+
+#+RESULTS:
+: 0
+
+

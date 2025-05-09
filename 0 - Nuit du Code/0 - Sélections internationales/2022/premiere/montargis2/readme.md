@@ -1,0 +1,3 @@
+Bonjour et bienvenue sur EcoInvasion !
+Tout d'abord le but du jeux est de récupérer les pieuvres rose et laisser les oiseaux aller à la mer. Utilisez les flèches pour vous déplacer. Pour chaque oiseaux ramasser vous perdez 3 de score. Pour chaque extraterrestre détruit vous gagnez 1 ! A partir de 10 de score si vous laissez passer un oiseau dans la mer vous gagnez 1 et au contraire si vous laissez passer une extraterrestre vous perdez 4. Si vous redescendez en dessous de 10 de score ce mode se désactive. La vitesse augmente de 20% tout les 10 de score. BOSS : Tout les 15 de score il y'a 2 fois plus de monstres. Pour une expérience plus immersive veuillez vous munir d'écouteurs
+YANNISB-NOAHDJ-THÉOT

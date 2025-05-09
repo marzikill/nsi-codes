@@ -1,0 +1,2 @@
+Appuyer sur les flèches directionnelles pour vous déplacer. "Espace" pour tirer, "D" pour acheter un boost de degat contre 250 d'argent, "A" pour acheter un boost d'argent contre 500 d'argent et "V" pour acheter un boost de vitesse contre 500 d'argent (limité à 4 achat). Le but est de faire le meilleur score tout en changeant de salle. Pour gagner du score il faut éliminer des ennemis mais attention à ne pas les touchers ! Appuyer sur "R" pour recommencer à tout moment et "Q" pour quitter.
+MIROU
