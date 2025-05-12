@@ -85,12 +85,34 @@ def parcours_largeur(G, depart):
             vus.append(sommet)
             for destination in G.voisins(sommet):
                 à_explorer.enfiler(destination)
-    return vus        
+    return vus, à_explorer        
+
+# un parcours en largeur du graphe à partir
+# du sommet départ renvoie la liste des sommets
+# du graphe, triée par ordre croissant par
+# rapport à leur distance par rapport au sommet
+# de départ.
 
 class MonTableau:
     def __init__(self, tab):
         """ MonTableau, [int] -> None """
         self.contenu = tab
+    
+    def __repr__(self):
+        return str(self.contenu)
+    
+    def __contains__(self, e):
+        # cette fonction a une complexité
+        # linéaire en la taille de self.contenu
+        for elem in self.contenu:
+            if elem == e:
+                return True
+        return False
+    
+    def appartient(self, e):
+        ...
+
+montab = MonTableau([1, 2, 3])
 
 class Ensemble:
     def __init__(self):
@@ -99,15 +121,18 @@ class Ensemble:
 
     def ajouter(self, elt):
         """ Ensemble, elt -> None """
-        pass
+        self.contenu[elt] = True
 
     def supprimer(self, elt):
         """ Ensemble, elt -> None """
-        pass
-
+        self.contenu[elt] = False
+        
     def __contains__(self, elt):
         """ Ensemble, elt -> bool """
-        pass
+        if elt in self.contenu:
+            return self.contenu[elt]
+        return False
+    # s'exécute en temps constant
 
 def parcours_profondeur_mieux(G, depart):
     """ Graphe, Sommet -> [Sommet]
@@ -117,5 +142,19 @@ def parcours_profondeur_mieux(G, depart):
 def parcours_largeur_mieux(G, depart):
     """ Graphe, Sommet -> [Sommet]
     Parcours le graphe G depuis le sommet depart en largeur """
-    pass
+    ordre = [] # on y ajoute les éléments
+    # dans l'ordre de parcours en largeur
+    vus = Ensemble()
+    à_explorer = File()
+    à_explorer.enfiler(depart)
+    while not à_explorer.est_vide():
+        sommet = à_explorer.defiler()
+        # vus est un ensemble : test
+        # d'appartenance en temps constant
+        if sommet not in vus: 
+            vus.ajouter(sommet) # marquer le sommet comme visité
+            ordre.append(sommet)
+            for destination in G.voisins(sommet):
+                à_explorer.enfiler(destination)
+    return ordre
 
