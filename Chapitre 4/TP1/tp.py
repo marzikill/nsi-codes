@@ -127,7 +127,8 @@ def pire_devoir(notes):
     """ [[str | int]] -> int
     Renvoie le numéro du devoir dont la moyenne est la plus faible
     """
-        if nombre_notes(notes) == 0:
+    # il n'y a pas de pire devoir si il n'y a pas de notes
+    if nombre_notes(notes) == 0:
         return -1
     n_mini = 1
     pire = moyenne_devoir(notes, 1)
