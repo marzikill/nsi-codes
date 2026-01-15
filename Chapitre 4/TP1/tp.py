@@ -98,6 +98,9 @@ def nombre_absences(notes, eleve):
     return -1
 
 def est_representative(notes, i):
+    """ [[str | int ]], int -> bool 
+    Renvoie True si la note de l'élève est représentative 
+    au sens de l'énoncé (pas plus d'1 devoir sur 3 manqué) False sinon"""
     nb_abs_maxi = int(1/3*nombre_notes(notes)) + 1
     return nombre_absences_indice(notes, i) < nb_abs_maxi
 
