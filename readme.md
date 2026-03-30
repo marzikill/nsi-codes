@@ -1,5 +1,5 @@
 # nsi-codes
-Codes du cours de terminale NSI à Paul Lapie (année 2024-2025)
+Codes du cours de première NSI au lycée Fustel de Coulanges (année 2025-2026)
 
-https://www.pisurquatre.xyz/nsi
+https://www.pisurquatre.xyz/nsi-premiere
 
