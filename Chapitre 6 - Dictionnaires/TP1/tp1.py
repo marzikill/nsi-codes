@@ -49,10 +49,20 @@ def animaux_refuge(animaux):
     return noms
 
 def animaux_enclos(animaux, numero):
-    pass
+    """ animaux : liste de dictionnaires"""
+    noms = []
+    for a in animaux:
+        # a : dictionnaire
+        if numero == a["enclos"]:
+            noms.append(a["nom"])
+    return noms
 
 def informations(animaux, nom):
-    pass
+    for a in animaux:
+        if a["nom"] == nom:
+            return a
+    return None
+    
     
     
     
