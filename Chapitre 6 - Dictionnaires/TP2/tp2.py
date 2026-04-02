@@ -22,9 +22,11 @@ def nb_likes(likes, nom):
 def ajoute_likes(likes, nom, l):
     """ {str: int}, str, int -> None
     Ajoute l au nombre de likes de nom """
-    
-    return None
-
+    if nom in likes:
+        likes[nom] = likes[nom] + l
+    else:
+        likes[nom] = l
+        
 def top_likes(likes):
     """ {str: int} -> str
     Renvoie le nom d'une personne possédant le plus de likes """
@@ -32,10 +34,21 @@ def top_likes(likes):
     maxi = 0
     # À compléter : algorithme du maximum
     # cf cours sur les listes
+    for prenom in likes:
+        if likes[prenom] > maxi:
+            maxi = likes[prenom]
+            nom = prenom
+    return nom
     
 def top_likes_mieux(likes):
     """ {str: int} -> [str]
     Renvoie la liste des personnes possédant le plus de likes """
     noms = []
     maxi = 0
-    # À compléter
+    for prenom in likes:
+        if likes[prenom] > maxi:
+            maxi = likes[prenom]
+            noms = [prenom]
+        elif likes[prenom] == maxi:
+            noms.append(prenom)
+    return noms
