@@ -67,26 +67,75 @@ def compte_voix(votes):
             decompte[nom] = decompte[nom] + 1
     return decompte
     
+decompte = compte_voix(votes)
     
 def pourcentage(decompte, nom):
     """ {str: int}, str -> float
     Renvoie le pourcentage de votes obtenu par nom dans décompte """
-    # À compléter
+    nb_voix_nom = decompte[nom]
+    s = 0
+    for n in decompte:
+        s = s + decompte[n]
+    return round(nb_voix_nom/s*100, 2)
+    
     
 def resultat_second_tour(decompte):
     """ {str: int} -> str
     Renvoie le nom de la personne ayant obtenu le plus de votes """
     decompte[''] = 0
-    meilleur = ''
-    # À compléter
+    meilleur = '' # nom du meilleur
+    for nom in decompte:
+        if decompte[nom] > decompte[meilleur]:
+            meilleur = nom
+    return meilleur
+    
     
 def deux_meilleurs(decompte):
     """ {str: int} -> {str: str}
     Renvoie un dictionnaire correspondant aux deux vote  majoritaires """
     decompte[''] = 0
     podium = {'1er': '', '2nd': ''}
-    # À compléter
+    # A compléter
     
 def resultat_premier_tour(decompte):
     """ {str: int} -> [str]
     Renvoie la ou les personnes gagnantes au premier tour """
+
+
+notes = {
+    "Aba": [15, 16, 12],
+    "Bouba": [19, 20, 20, 20],
+    "Cem": [9, 13, 14, 15]
+}
+
+def ajoute_note(notes, prenom, n):
+    """ {str: [int]}, str, int -> None
+    Ajoute n à la liste de notes de prenom """
+    if prenom in notes:
+        notes[prenom] = notes[prenom] + [n]
+    else:
+        notes[prenom] = [n]
+        
+ajoute_note(notes, "Aba", 17)
+ajoute_note(notes, "David", 14)        
+
+def moyenne_eleve(notes, prenom):
+    """ {str: [int]}, str -> int
+    Renvoie la moyenne de prenom """
+    liste_notes = notes[prenom]
+    s = 0
+    for n in liste_notes:
+        s = s + n
+    return s/len(liste_notes)
+        
+
+def moyennes(notes):
+    """ {str: [int]} -> {str: int}
+    Renvoie le dictionnaire associant chaque prénom à sa note """
+    
+def moyenne_classe(notes):
+    """ {str: [int]}, str -> int
+    Renvoie la moyenne de la classe sur l'ensemble des notes """
+   
+   
+   
