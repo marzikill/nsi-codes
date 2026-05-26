@@ -128,7 +128,6 @@ def moyenne_eleve(notes, prenom):
         s = s + n
     return s/len(liste_notes)
         
-
 def moyennes(notes):
     """ {str: [int]} -> {str: int}
     Renvoie le dictionnaire associant chaque prénom à sa note """

@@ -1,19 +1,24 @@
 def est_trie(tab):
     """ [int] -> bool
     Renvoie True si tab est trié par ordre croissant, False sinon """
-    pass
+    for i in range(len(tab) - 1):
+        if tab[i] > tab[i + 1]:
+            return False
+    return True
 
+from random import randint
 
 def genere_tableau(n, x_min, x_max):
     """ int, int, int -> [int]
     Renvoie un tableau d'entiers tirés au hasard parmi [x_min, x_max] """
-    pass
-
+    return [randint(x_min, x_max) for _ in range(n)]
 
 def echange(tab, i, j):
     """ [int], int, int -> None
     Échange les éléments d'indice i et j dans tab """
-    pass
+    temp = tab[i]
+    tab[i] = tab[j]
+    tab[j] = tab[i]
 
 
 def tri_insertion(tab):
